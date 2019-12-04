@@ -1,2 +1,2 @@
 import Vue from 'vue'
-export const hostname = 'localhost';
+export const hostname = 'ninetechs.000webhostapp.com';
