@@ -33,6 +33,7 @@
 
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
+import { hostname } from '@/data/hostinger.js';
 import Login from '@/components/Home/Login.vue'
 import encabezado from '@/components/Tools/header.vue'
 import inicio from '@/components/Home/inicio.vue'
@@ -50,6 +51,7 @@ export default {
   },
   data(){
     return {
+      hostName:hostname,
       datos:{},
       nav:0,
       log:false,

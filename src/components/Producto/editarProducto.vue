@@ -156,6 +156,7 @@
     </div>
 </template>
 <script>
+import { hostname } from '@/data/hostinger.js';
 import { mdbBadge } from 'mdbvue';
 import modals from '@/components/Tools/modals.vue'
 import municipios from '@/recurses/municipios.js'
@@ -174,6 +175,7 @@ export default {
     },
     data(){
         return {
+            hostName:hostname,
             id:this.$route.params.id,
 
             target:"",
@@ -250,7 +252,7 @@ export default {
         },
         getOrden(){
             let $el=this
-            axios.get("http://mueblesdimmsa.com/ddm/productos.php?id="+$el.id)
+            axios.get("http://"+$el.hostName+"/ddm/productos.php?id="+$el.id)
 
         	.then(function(response){
             
@@ -325,7 +327,7 @@ export default {
 
                             
                         
-                            axios.post("http://mueblesdimmsa.com/ddm/productos.php?accion=editar",formdata)
+                            axios.post("http://"+$el.hostName+"/ddm/productos.php?accion=editar",formdata)
                                 .then(function(response){
                                 if (response.data.error == true){
                                     $el.getModa(3,response.data.mensaje)

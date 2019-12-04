@@ -87,11 +87,13 @@
     
 </template>
 <script>
+    import { hostname } from '@/data/hostinger.js';
     import { db } from '@/data/db.js'
     import { Timestamp } from '@/data/db.js'
 export default {
   data() {
     return {
+      hostName:hostname,
       documents: [],
       docs:[],
       type:'',

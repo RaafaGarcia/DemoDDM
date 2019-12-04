@@ -25,6 +25,7 @@
     </div>
 </template>
 <script>
+import { hostname } from '@/data/hostinger.js';
 import encabezado from '../components/Tools/header.vue'
 export default {
     props:{

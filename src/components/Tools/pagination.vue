@@ -11,6 +11,7 @@
     
 </template>
 <script>
+import { hostname } from '@/data/hostinger.js';
   import {all} from '@/data/messages';
  
  

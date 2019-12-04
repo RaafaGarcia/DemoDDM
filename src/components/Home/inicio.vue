@@ -68,6 +68,7 @@
     </div>
 </template>
 <script>
+import { hostname } from '@/data/hostinger.js';
 import { setTimeout } from 'timers'
 import notifi from '@/components/Tools/notifiaciones.vue'
 export default {
@@ -79,6 +80,7 @@ export default {
     },
     data(){
         return {
+            hostName:hostname,
             notifications:[
 					{
 						ID:1,
@@ -145,7 +147,7 @@ export default {
     methods:{
         getDatos:function () {
             let $el=this
-            axios.get("http://mueblesdimmsa.com/ddm/usuarios.php?id="+localStorage.getItem("id_usuario"))
+            axios.get("http://"+$el.hostName+"/ddm/usuarios.php?id="+localStorage.getItem("id_usuario"))
         	.then(function(response){
             
             if (response.data.error == true){

@@ -383,6 +383,7 @@
     </div>
 </template>
 <script>
+import { hostname } from '@/data/hostinger.js';
 import sidebar from '@/components/Tools/sidebar.vue'
 import encabezado from '@/components/Tools/header.vue'
 import { setTimeout } from 'timers'
@@ -396,6 +397,7 @@ export default {
     },
     data(){
         return {
+            hostName:hostname,
             //PAGINACION
             typeSearch:"Folio",
             posts : [''],

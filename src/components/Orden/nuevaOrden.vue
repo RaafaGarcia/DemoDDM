@@ -296,6 +296,7 @@
     </div>
 </template>
 <script>
+import { hostname } from '@/data/hostinger.js';
 import { mdbBadge,mdbIcon,mdbInput,mdbTooltip } from 'mdbvue';
 import modals from '@/components/Tools/modals.vue'
 import sidebar from '@/components/Tools/sidebar.vue'
@@ -316,6 +317,7 @@ export default {
     },
     data(){
         return {
+            hostName:hostname,
             SelectManual:false,
             target:"",
             accion:"",
@@ -401,7 +403,7 @@ export default {
             
             let $el=this
 
-            axios.get("http://mueblesdimmsa.com/ddm/productos.php")
+            axios.get("http://"+$el.hostName+"/ddm/productos.php")
 
         	.then(function(response){
             
@@ -427,7 +429,7 @@ export default {
             
             let $el=this
 
-            axios.get("http://mueblesdimmsa.com/ddm/clientes.php")
+            axios.get("http://"+$el.hostName+"/ddm/clientes.php")
 
         	.then(function(response){
             
@@ -453,7 +455,7 @@ export default {
 
            let idNew = 0
 
-            axios.get("http://mueblesdimmsa.com/ddm/ordenes.php?accion=top")
+            axios.get("http://"+$el.hostName+"/ddm/ordenes.php?accion=top")
 
             .then(function(response){
 
@@ -525,7 +527,7 @@ export default {
 
                     formCliente.append("nombre",local.cliente);
                     
-                    axios.post("http://mueblesdimmsa.com/ddm/clientes.php?accion=ins",formCliente)
+                    axios.post("http://"+$el.hostName+"/ddm/clientes.php?accion=ins",formCliente)
 
                     .then(function(response){
 
@@ -539,7 +541,7 @@ export default {
                         formdata.append("status",local.status);
                         formdata.append("detalle",JSON.stringify(items));
 
-                        axios.post("http://mueblesdimmsa.com/ddm/ordenes.php?accion=insertar",formdata)
+                        axios.post("http://"+$el.hostName+"/ddm/ordenes.php?accion=insertar",formdata)
 
                         .then(function(response){
 
@@ -573,7 +575,7 @@ export default {
                     formdata.append("status",local.status);
                     formdata.append("detalle",JSON.stringify(items));
 
-                    axios.post("http://mueblesdimmsa.com/ddm/ordenes.php?accion=insertar",formdata)
+                    axios.post("http://"+$el.hostName+"/ddm/ordenes.php?accion=insertar",formdata)
                     
                     .then(function(response){
 

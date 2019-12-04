@@ -78,6 +78,7 @@
 </template>
 
 <script>
+import { hostname } from '@/data/hostinger.js';
 import { mdbContainer, mdbRow, mdbIcon, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbBtn, mdbBadge, mdbCol } from 'mdbvue';
 import { watch } from 'fs';
 export default {
@@ -119,6 +120,7 @@ export default {
   data() {
       
     return {
+      hostName:hostname,
         iditem:this.item,
         ask:this.question,
         tipo:this.type,

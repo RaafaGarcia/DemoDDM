@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { hostname } from '@/data/hostinger.js';
 import {
   mdbContainer,
   mdbRow,

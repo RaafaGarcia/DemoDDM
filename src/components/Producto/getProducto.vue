@@ -139,6 +139,7 @@
     </div>
 </template>
 <script>
+import { hostname } from '@/data/hostinger.js';
 import { mdbPagination,mdbPageNav,mdbPageItem,mdbInput,mdbFormInline,mdbContainer, mdbRow, mdbIcon, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbBtn, mdbBadge, mdbCol } from 'mdbvue';
 import modals from '@/components/Tools/modals.vue'
 import sidebar from '@/components/Tools/sidebar.vue'
@@ -172,6 +173,7 @@ export default {
     },
     data(){
         return {
+            hostName:hostname,
             target:"",
             accion:"",
             ask:"",
@@ -235,7 +237,7 @@ export default {
         },
         getOrden(){
             let $el=this
-            axios.get("http://mueblesdimmsa.com/ddm/productos.php?accion=desc")
+            axios.get("http://"+$el.hostName+"/ddm/productos.php?accion=desc")
         	.then(function(response){
             
             if (response.data.error == true){
@@ -282,7 +284,7 @@ export default {
             let formdata=new FormData()
             formdata.append("id",id);
             let $el=this
-            axios.post("http://mueblesdimmsa.com/ddm/productos.php?accion=eliminar",formdata)
+            axios.post("http://"+$el.hostName+"/ddm/productos.php?accion=eliminar",formdata)
             .then(function(response){
                 $el.getModal(1,"Producto eliminado con éxito")
                 setTimeout(function(){location.reload(); }, 2000);

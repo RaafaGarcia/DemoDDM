@@ -47,6 +47,7 @@
     </div>
 </template>
 <script>
+import { hostname } from '@/data/hostinger.js';
 import modals from '@/components/Tools/modals.vue'
 export default {
   props:{
@@ -60,6 +61,7 @@ export default {
   },
     data(){
       return{
+        hostName:hostname,
         id:this.$route.params.id,
             target:"",
             accion:"",
@@ -110,7 +112,7 @@ export default {
         formdata.append("clave",$el.dataComp.pass)
 		    
         
-        axios.post("http://mueblesdimmsa.com/ddm/usuarios.php",formdata)
+        axios.post("http://"+$el.hostName+"/ddm/usuarios.php",formdata)
         	.then(function(response){
             
             if (response.data.error == true){

@@ -77,6 +77,7 @@
 </div>
 </template>
 <script  >
+import { hostname } from '@/data/hostinger.js';
  import { db } from '@/data/db.js'
     import { Timestamp } from '@/data/db.js'
 import { mdbPopover,mdbBadge, mdbRow, mdbBtn, mdbContainer, mdbIcon, mdbJumbotron, mdbView, mdbMask, mdbCardTitle } from 'mdbvue';
@@ -97,6 +98,7 @@ export default {
   },
     data () {
 		return {
+			hostName:hostname,
 			documents: [],
 			docs:[],
 			tittle:'',

@@ -178,6 +178,7 @@
     </div>
 </template>
 <script>
+import { hostname } from '@/data/hostinger.js';
 import { mdbPagination,mdbPageNav,mdbPageItem,mdbInput,mdbFormInline,mdbContainer, mdbRow, mdbIcon, mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbBtn, mdbBadge, mdbCol } from 'mdbvue';
 import sidebar from '@/components/Tools/sidebar.vue'
 import modals from '@/components/Tools/modals.vue'
@@ -189,7 +190,7 @@ export default {
         login:Boolean
     },
     components:{
-        modals,
+    modals,
     sidebar,
     mdbIcon,
      mdbContainer,
@@ -214,6 +215,7 @@ export default {
     },
     data(){
         return {
+            hostName:hostname,
             target:"",
             accion:"",
             ask:"",
@@ -308,7 +310,7 @@ export default {
         },
         getOrden(){
             let $el=this
-            axios.get("http://mueblesdimmsa.com/ddm/ordenes.php")
+            axios.get("http://"+$el.hostName+"/ddm/ordenes.php")
         	.then(function(response){
             
             if (response.data.error == true){
@@ -333,7 +335,7 @@ export default {
         },
         getclients(){
             let $el=this
-            axios.get("http://mueblesdimmsa.com/ddm/clientes.php")
+            axios.get("http://"+$el.hostName+"/ddm/clientes.php")
         	.then(function(response){
             
             if (response.data.error == true){
@@ -374,7 +376,7 @@ export default {
             let formdata=new FormData()
             formdata.append("id",id);
             let $el=this
-            axios.post("http://mueblesdimmsa.com/ddm/ordenes.php?accion=eliminar",formdata)
+            axios.post("http://"+$el.hostName+"/ddm/ordenes.php?accion=eliminar",formdata)
             .then(function(response){
                     $el.getModal(1,"Orden eliminada con éxito")
                     setTimeout(function(){location.reload(); }, 2000);

@@ -154,6 +154,7 @@
     </div>
 </template>
 <script>
+import { hostname } from '@/data/hostinger.js';
 import { mdbBadge } from 'mdbvue';
 import modals from '@/components/Tools/modals.vue'
 import sidebar from '@/components/Tools/sidebar.vue'
@@ -172,6 +173,7 @@ export default {
     },
     data(){
         return {
+            hostName:hostname,
             target:"",
             accion:"",
             ask:"",
@@ -254,7 +256,7 @@ export default {
 
            let idNew = 0
 
-            axios.get("http://mueblesdimmsa.com/ddm/productos.php?accion=top")
+            axios.get("http://"+$el.hostName+"/ddm/productos.php?accion=top")
 
             .then(function(response){
                 
@@ -315,7 +317,7 @@ export default {
                         
                         formdata.append("especificaciones",null);
 
-                        axios.post("http://mueblesdimmsa.com/ddm/productos.php?accion=insertar",formdata)
+                        axios.post("http://"+$el.hostName+"/ddm/productos.php?accion=insertar",formdata)
                         
                         .then(function(response){
                             

@@ -302,6 +302,7 @@
     </div>
 </template>
 <script>
+import { hostname } from '@/data/hostinger.js';
 import { mdbBadge,mdbIcon,mdbInput,mdbTooltip } from 'mdbvue';
 import modals from '@/components/Tools/modals.vue'
 import sidebar from '@/components/Tools/sidebar.vue'
@@ -322,6 +323,7 @@ export default {
     },
     data(){
         return {
+            hostName:hostname,
             SelectManual:false,
             id:this.$route.params.id,
             target:"",
@@ -412,7 +414,7 @@ export default {
             
             let $el=this
 
-            axios.get("http://mueblesdimmsa.com/ddm/productos.php")
+            axios.get("http://"+$el.hostName+"/ddm/productos.php")
 
         	.then(function(response){
             
@@ -454,7 +456,7 @@ export default {
         getOrden(){
             let $el=this
 
-            axios.get("http://mueblesdimmsa.com/ddm/ordenes.php?id="+$el.id)
+            axios.get("http://"+$el.hostName+"/ddm/ordenes.php?id="+$el.id)
 
         	.then(function(response){
             
@@ -492,7 +494,7 @@ export default {
         },
         getclients(){
             let $el=this
-            axios.get("http://mueblesdimmsa.com/ddm/clientes.php")
+            axios.get("http://"+$el.hostName+"/ddm/clientes.php")
         	.then(function(response){
             
             if (response.data.error == true){
@@ -527,7 +529,7 @@ export default {
 
                     formCliente.append("nombre",local.cliente);
                     
-                    axios.post("http://mueblesdimmsa.com/ddm/clientes.php?accion=ins",formCliente)
+                    axios.post("http://"+$el.hostName+"/ddm/clientes.php?accion=ins",formCliente)
                     .then(function(response){
                         
                         formdata.append("id",$el.id);
@@ -542,7 +544,7 @@ export default {
                         formdata.append("detalle",JSON.stringify(items));
                                 
                             
-                        axios.post("http://mueblesdimmsa.com/ddm/ordenes.php?accion=editar",formdata)
+                        axios.post("http://"+$el.hostName+"/ddm/ordenes.php?accion=editar",formdata)
                         .then(function(response){
 
                             if (response.data.error == true){
@@ -582,7 +584,7 @@ export default {
 
                                 
                             
-                    axios.post("http://mueblesdimmsa.com/ddm/ordenes.php?accion=editar",formdata)
+                    axios.post("http://"+$el.hostName+"/ddm/ordenes.php?accion=editar",formdata)
                     .then(function(response){
                         if (response.data.error == true){
                             $el.getModal(3,response.data.mensaje)
